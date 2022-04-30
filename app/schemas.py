@@ -2,12 +2,13 @@ from pydantic import BaseModel,EmailStr
 from datetime import datetime
 from typing import Optional
 class Joke(BaseModel):
-    id : int
     content : str
-    created_at : datetime
 class Joke_out(BaseModel):
-    id : int
     content : str
+    class Config:
+        orm_mode = True
+class Joke_out_id(Joke_out):
+    id : int 
     class Config:
         orm_mode = True
 class UserCreate(BaseModel):
